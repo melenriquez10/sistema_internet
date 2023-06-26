@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat Dinámico</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #415fa0;
+    }
+
+    #chat-container {
+      width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #chat-messages {
+      max-height: 300px;
+      overflow-y: scroll;
+      padding: 10px;
+      background-color: #f2f2f2;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .message {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .message-sender {
+      font-weight: bold;
+      color: #333;
+    }
+
+    #chat-input {
+      margin-top: 10px;
+      display: flex;
+    }
+
+    #message-input {
+      flex: 1;
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    #send-button {
+      padding: 5px 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #send-button:hover {
+      background-color: #2980b9;
+    }
+
+    .bot-response {
+      font-style: italic;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat-container">
+    <div id="chat-messages">
+    </div>
+    <div id="chat-input">
+      <input type="text" id="message-input" placeholder="Escribe tu mensaje..." />
+      <button id="send-button">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    const chatMessages = document.getElementById('chat-messages');
+    const messageInput = document.getElementById('message-input');
+    const sendButton = document.getElementById('send-button');
+
+    sendButton.addEventListener('click', function() {
+      const message = messageInput.value;
+      if (message.trim() !== '') {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+        messageElement.textContent = message;
+        chatMessages.appendChild(messageElement);
+
+        const botResponse = document.createElement('div');
+        botResponse.classList.add('message', 'bot-response');
+        botResponse.textContent = '¡Gracias por tu mensaje! Nuestro equipo se pondra en contacto contigo pronto.';
+        chatMessages.appendChild(botResponse);
+
+        messageInput.value = '';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Estadisticas de Internet</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="graficoEstadisticas"></canvas>
+
+  <script>
+    // Datos de ejemplo para el gráfico
+    var datos = {
+      labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+      datasets: [{
+        label: 'Velocidad de Internet (Mbps)',
+        data: [50, 60, 70, 65, 80, 75],
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    };
+
+    // Configuración del gráfico
+    var opciones = {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    };
+
+    // Crear el gráfico
+    var ctx = document.getElementById('graficoEstadisticas').getContext('2d');
+    var grafico = new Chart(ctx, {
+      type: 'bar',
+      data: datos,
+      options: opciones
+    });
+  </script>
+</body>
+</html>
